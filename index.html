@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale" />
+    <meta name="keywords" content="" />
+    <title>JS Slider</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .main {
+        border: 1px solid red;
+        width: 50%;
+        position: relative;
+        background: url("bricks-background.jpg");
+        background-size: cover;
+        margin: 50px auto;
+      }
+      .container {
+        width: 500px;
+        height: 250px;
+        border: 1px solid black;
+        margin: 30px auto;
+        position: relative;
+        overflow: hidden;
+        border-radius: 60px;
+      }
+      .slider {
+        width: 2500px;
+        height: 250px;
+        position: absolute;
+        transition: 1s ease-in-out;
+      }
+      .box {
+        width: 500px;
+        height: 100%;
+        float: left;
+      }
+      .box:nth-child(1) {
+        background-color: red;
+      }
+      .box:nth-child(2) {
+        background-color: rgb(8, 173, 57);
+      }
+      .box:nth-child(3) {
+        background-color: rgb(189, 238, 56);
+      }
+      .box:nth-child(4) {
+        background-color: rgb(176, 14, 182);
+      }
+      .box:nth-child(5) {
+        background-color: rgb(20, 224, 180);
+      }
+
+      .nav {
+        position: absolute;
+        top: 40%;
+        width: 60px;
+        height: 60px;
+        line-height: 60px;
+        font-size: 45px;
+        color: white;
+        background-color: rgba(36, 33, 32, 0.4);
+        cursor: pointer;
+        transition: 0.5s ease-in-out;
+        text-align: center;
+        opacity: 0.5;
+      }
+      .main:hover .nav {
+        opacity: 1;
+      }
+      .main .nav:hover {
+        background-color: rgba(10, 10, 10, 0.6);
+        color: orangered;
+      }
+      .next {
+        right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="container">
+        <div class="slider" id="sld">
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+        </div>
+      </div>
+      <span class="nav previous" onclick="fPrevious()"><</span>
+      <span class="nav next" onclick="fNext()">></span>
+    </div>
+  </body>
+  <script>
+    var sb = 0;
+    function fNext() {
+      sb += -500;
+      if (sb < -2000) sb = 0;
+      document.getElementById("sld").style.transform =
+        "translateX(" + sb + "px)";
+    }
+    function fPrevious() {
+      sb += 500;
+      if (sb > 0) sb = -2000;
+      document.getElementById("sld").style.transform =
+        "translateX(" + sb + "px)";
+    }
+  </script>
+</html>
